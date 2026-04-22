@@ -12,11 +12,13 @@ import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { isInitializeRequest } from "@modelcontextprotocol/sdk/types.js";
 import { StreamableHTTPServerTransport } from "@modelcontextprotocol/sdk/server/streamableHttp.js";
 import { z } from "zod";
+import path from "node:path";
 
 
 config();
 
-const todoHtml = readFileSync("public/todo-widget.html", "utf8");
+const filePath = path.join(process.cwd(), "public/todo-widget.html");
+const todoHtml = readFileSync(filePath, "utf8");
 
 const addTodoInputSchema = {
   title: z.string().min(1),
